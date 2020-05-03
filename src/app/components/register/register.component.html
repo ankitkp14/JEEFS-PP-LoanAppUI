@@ -1,0 +1,113 @@
+<!-- registration form -->
+
+<div class="offset-lg-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 shadow-lg p-3 mb-5 rounded"
+  style="margin-top: 2%;background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+
+  <h4 class="text-center text-light bg-primary"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Create an
+    Account</h4>
+
+  <!-- form -->
+  <form [formGroup]="addForm" (ngSubmit)="addUser()">
+
+    <!-- account number -->
+    <div class="form-group">
+      <label for="account">Account Number <sup style="color: red;">*</sup></label>
+      <input type="number" class="form-control" formControlName="accountNum"
+        placeholder="Enter 11 digit Account Number">
+
+      <!-- validation -->
+      <div *ngIf="submitted && addForm.controls.accountNum.errors">
+        <div *ngIf="addForm.controls.accountNum.errors.required" class="text-danger">
+          <small> Account Number is required..</small>
+        </div>
+        <div *ngIf="addForm.controls.accountNum.errors.pattern" class="text-danger">
+          <small>Must be of 11 Digits and Numeric starting from 1 to 9..!!</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- name -->
+    <div class="form-group">
+      <label for="name">Full Name <sup style="color: red;">*</sup></label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+
+      <!-- validation -->
+      <div *ngIf="submitted && addForm.controls.name.errors">
+        <div *ngIf="addForm.controls.name.errors.required" class="text-danger">
+          <small> Name is required..</small>
+        </div>
+        <div *ngIf="addForm.controls.name.errors.pattern" class="text-danger">
+          <small> Should contain alphabets only..</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- gender -->
+    <div class="form-group">
+      <label for="gender">Gender <sup style="color: red;">*</sup></label>
+      <select name="gender" class="form-control" formControlName="gender">
+        <option value="" selected>Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <!-- validation -->
+      <div *ngIf="submitted && addForm.controls.gender.errors">
+        <div *ngIf="addForm.controls.gender.errors.required" class="text-danger">
+          <small> Gender is required..</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- password -->
+    <div class="form-group">
+      <label for="password">Create Password <sup style="color: red;">*</sup></label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+
+      <!-- validation -->
+      <div *ngIf="submitted && addForm.controls.password.errors">
+        <div *ngIf="addForm.controls.password.errors.required" class="text-danger">
+          <small> Password is required..</small>
+        </div>
+        <div *ngIf="addForm.controls.password.errors.pattern" class="text-danger">
+          <small>Must contain at least one capital letter, number and symbol with at least 6 chars..</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="otp">Generated Code <sup style="color: red;">*</sup><small> (through reg. mobile
+          number)</small></label>
+      <input type="number" class="form-control" formControlName="otp" placeholder="Code">
+
+      <div *ngIf="submitted && addForm.controls.otp.errors">
+        <div *ngIf="addForm.controls.otp.errors.required" class="text-danger">
+          <small> Code is required..</small>
+        </div>
+        <div *ngIf="addForm.controls.otp.errors.pattern" class="text-danger">
+          <small>Code must contain 6 numeric digits..</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <small style="color: red;">All fields are required !!</small>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-raised btn-success">Register</button> &nbsp;
+      <button type="reset" class="btn btn-raised btn-danger">Cancel</button> &nbsp;
+      <button type="button" routerLink="/index" class="btn btn-raised btn-primary">Home</button>
+    </div>
+  </form>
+</div>
+
+<!-- alert when account successfully created -->
+<div class="alert alert-success text-center" *ngIf="registerSuccess" role="alert">
+  {{this.user}}
+</div>
+
+<!-- alert when account already exists -->
+<div class="alert alert-danger text-center" role="alert" *ngIf="invalidAccount">
+  {{this.error}}
+</div>

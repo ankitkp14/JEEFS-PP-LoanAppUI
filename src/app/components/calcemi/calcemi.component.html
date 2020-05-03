@@ -1,0 +1,103 @@
+<!-- calculate emi -->
+
+<div class="offset-lg-4 col-lg-4 shadow-lg p-3 mb-5 rounded" style="margin-top: 2%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+    <h4 class="text-center text-light bg-info"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate EMI</h4>
+    <!-- form to calculate -->
+    <form [formGroup]="addForm" (ngSubmit)="calculate()">
+        <!-- loan amount -->
+        <div class="form-group">
+            <label for="amount">Amount <sup style="color: red;">*</sup></label>
+            <input type="number" class="form-control" formControlName="amount" aria-describedby="amount" placeholder="Enter Amount">
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.amount.errors">
+                <div *ngIf="addForm.controls.amount.errors.required" class="text-danger">
+                    <small>Amount is required..</small>
+                </div>
+                <div *ngIf="addForm.controls.amount.errors.min" class="text-danger">
+                    <small>Minimum Amount should be &#8377; 1,00,000...</small>
+                </div>
+                <div *ngIf="addForm.controls.amount.errors.max" class="text-danger">
+                    <small>Maximum Amount should be &#8377; 1,00,00,000...</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- duration -->
+        <div class="form-group">
+            <label for="time">Duration <sup style="color: red;">*</sup></label>
+            <select name="duration" id="duration" class="form-control" required formControlName="duration">
+                <option value="" selected>Select Duration</option>
+                <option value="6">6 Months</option>
+                <option value="12">12 Months</option>
+                <option value="24">24 Months</option>
+                <option value="36">36 Months</option>
+                <option value="60">60 Months</option>
+                <option value="120">120 Months</option>
+            </select>
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.duration.errors">
+                <div *ngIf="addForm.controls.duration.errors.required" class="text-danger">
+                    <small>Duration is required..</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- loan type -->
+        <div class="form-group">
+            <label for="loanType">Loan Type <sup style="color: red;">*</sup></label>
+            <select name="loanType" id="loanType" class="form-control" required formControlName="loanType">
+                <option value="" selected>Select Type</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Car Loan">Car Loan</option>
+                <option value="Education Loan">Education Loan</option>
+            </select>
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.loanType.errors">
+                <div *ngIf="addForm.controls.loanType.errors.required" class="text-danger">
+                    <small>Type is required..</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- info -->
+        <div class="form-group">
+            <small style="color: red;">* All fields are Required..!!</small><br>
+            <small style="color: red;">** Loan Amount Should Be Between &#8377; 1,00,000 and &#8377; 1,00,00,000</small>
+        </div>
+
+        <!-- buttons -->
+        <div class="form-group text-center" *ngIf="submit1">
+            <button type="submit" class="btn btn-raised btn-success">Calculate</button> &nbsp;
+            <button type="reset" class="btn btn-raised btn-danger">Cancel</button> &nbsp;
+            <button type="button" routerLink="/home" class="btn btn-raised btn-primary">Home</button>
+        </div>
+    </form>
+
+    <!-- table for emi Details -->
+    <h3 class="text-center text-primary" *ngIf="submit2">EMI Details</h3>
+    <table class="table table-hover table-striped table-responsive text-center" *ngIf="submit2">
+        <thead>
+            <tr class="bg-info">
+                <th class="text-light">Amount</th>
+                <th class="text-light">Duration</th>
+                <th class="text-light">Loan Type</th>
+                <th class="text-light">ROI</th>
+                <th class="text-light">EMI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&#8377; {{this.loanAmount}}</td>
+                <td>{{this.duration}} Months</td>
+                <td>{{this.loanType}}</td>
+                <td>{{this.rate}} %</td>
+                <td>&#8377; {{this.emi}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" routerLink="/home" class="btn btn-raised btn-danger" style="float:right;"
+        *ngIf="submit2">Back</button>
+</div>

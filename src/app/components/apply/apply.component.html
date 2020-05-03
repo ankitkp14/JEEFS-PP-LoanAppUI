@@ -1,0 +1,93 @@
+<!-- message on loan Successfully applied -->
+<div class="alert alert-success text-center" *ngIf="loanApplied" role="alert">
+    {{this.message}}
+</div>
+
+<!-- error message if loan already exists -->
+<div class="alert alert-danger text-center" *ngIf="loanExists" role="alert">
+    {{this.error}}
+</div>
+
+<!-- apply loan form -->
+<div class="offset-lg-4 offset-md-4 col-lg-4 col-md-4 shadow-lg p-3 mb-5 rounded"
+    style="margin-top: 1%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+    <h4 class="text-center text-light bg-info">
+        <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Apply Loan
+    </h4>
+
+    <!-- form -->
+    <form [formGroup]="addForm" (ngSubmit)="apply()">
+        <!-- loan amount -->
+        <div class="form-group">
+            <label for="amount">Loan Amount <sup style="color: red;">*</sup></label>
+            <input type="number" class="form-control" formControlName="loanAmt" aria-describedby="amount"
+                placeholder="Enter Loan Amount">
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.loanAmt.errors">
+                <div *ngIf="addForm.controls.loanAmt.errors.required" class="text-danger">
+                    <small>Amount is required..</small>
+                </div>
+                <div *ngIf="addForm.controls.loanAmt.errors.min" class="text-danger">
+                    <small>Minimum Amount should be &#8377; 1,00,000...</small>
+                </div>
+                <div *ngIf="addForm.controls.loanAmt.errors.max" class="text-danger">
+                    <small>Maximum Amount should be &#8377; 1,00,00,000...</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- duration -->
+        <div class="form-group">
+            <label for="time">Duration <sup style="color: red;">*</sup></label>
+            <select name="duration" id="duration" class="form-control" required formControlName="time">
+                <option value="" selected>Select Duration</option>
+                <option value="6">6 Months</option>
+                <option value="12">12 Months</option>
+                <option value="24">24 Months</option>
+                <option value="36">36 Months</option>
+                <option value="60">60 Months</option>
+                <option value="120">120 Months</option>
+            </select>
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.time.errors">
+                <div *ngIf="addForm.controls.time.errors.required" class="text-danger">
+                    <small>Duration is required..</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- loan type -->
+        <div class="form-group">
+            <label for="loanType">Loan Type <sup style="color: red;">*</sup></label>
+            <select name="loanType" id="loanType" class="form-control" required formControlName="loanType">
+                <option value="" selected>Select Type</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Car Loan">Car Loan</option>
+                <option value="Education Loan">Education Loan</option>
+            </select>
+
+            <!-- validation -->
+            <div *ngIf="submitted && addForm.controls.loanType.errors">
+                <div *ngIf="addForm.controls.loanType.errors.required" class="text-danger">
+                    <small>Type is required..</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- info -->
+        <div class="form-group">
+            <small style="color: red;">* All fields are Required..!!</small><br>
+            <small style="color: red;">** Loan Amount Should Be Between &#8377; 1,00,000 and &#8377; 1,00,00,000</small>
+        </div>
+        <!-- buttons -->
+        <br>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-raised btn-success"><i class="fa fa-plus"
+                    aria-hidden="true"></i>Apply</button> &nbsp;
+            <button type="reset" class="btn btn-raised btn-danger">Cancel</button> &nbsp;
+            <button type="button" routerLink="/home" class="btn btn-raised btn-primary">Home</button>
+        </div>
+    </form>
+</div>

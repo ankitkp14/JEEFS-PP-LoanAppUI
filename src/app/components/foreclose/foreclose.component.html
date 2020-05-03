@@ -1,0 +1,143 @@
+<!-- error alert if loan does not exist -->
+<div class="alert alert-danger text-center" *ngIf="loanExists" role="alert">
+    {{this.error}}
+</div>
+
+<div class="offset-lg-3 col-lg-6 shadow-lg p-3 mb-5 rounded"
+    style="margin-top: 5%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+    <h4 class="text-center text-light bg-info"><i class="fa fa-minus-square" aria-hidden="true"></i> Foreclose Loan</h4>
+    <br>
+    <!-- user details -->
+    <table class="table table-hover table-striped text-center">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th class="text-light">EMIs Left</th>
+                <th class="text-light">Foreclose Amount</th>
+                <th class="text-light">Loan Type</th>
+                <th class="text-light">ROI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.emiLeft}}</td>
+                <td>&#8377; {{this.foreClose}}</td>
+                <td>{{this.userDetails.loanType}}</td>
+                <td>{{this.userDetails.rate}} %</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- foreclose buttons -->
+    <div class="form-group text-center" style="margin-top: 5%;margin-bottom: 7%;">
+        <button (click)="foreCloseConfirm()" class="btn btn-raised btn-success"><i class="fa fa-minus-square"
+                aria-hidden="true"></i> Foreclose</button> &nbsp;
+        <button routerLink="/home" class="btn btn-raised btn-primary">Home</button>
+    </div>
+</div>
+<div class="row" style="margin-top: 6%;">
+
+</div>
+
+<!-- foreclose confirmation -->
+<div class="row" *ngIf="confirmForeclose">
+    <div class="offset-lg-4 col-lg-4 shadow-lg p-3 mb-5 rounded" style="margin-top:2px; background:radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+        <h5 class="text-center text-light bg-info">Payment Information</h5>    
+        <!-- form -->
+        <form [formGroup]="addForm" (ngSubmit)="foreclose()">
+                <!-- card number -->
+                <div class="form-group">
+                    <label for="card">Card Number <sup style="color: red;">*</sup></label>
+                    <input type="number" class="form-control" formControlName="card" placeholder="Enter Card Number">
+        
+                    <!-- validation -->
+                    <div *ngIf="submitted && addForm.controls.card.errors">
+                        <div *ngIf="addForm.controls.card.errors.required" class="text-danger">
+                            <small>Card number is required..</small>
+                        </div>
+                        <div *ngIf="addForm.controls.card.errors.pattern" class="text-danger">
+                            <small>Must Contain 16 digits..</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Expiry date -->
+                <label for="date">Expiry Date<sup style="color: red;">*</sup></label>
+                <div class="form-group row">
+                    &nbsp;&nbsp;&nbsp;
+                    <!-- month -->
+                    <select name="Month" id="month" class="col-sm-3 form-control" formControlName="month">
+                        <option value="">Month</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select> 
+                
+                    <!-- year -->
+                    <select name="year" id="year" class="offset-sm-1 col-sm-3 form-control" formControlName="year">
+                        <option value="">Year</option>
+                        <option value="01">2020</option>
+                        <option value="02">2021</option>
+                        <option value="03">2022</option>
+                        <option value="04">2023</option>
+                        <option value="05">2024</option>
+                        <option value="06">2025</option>
+                        <option value="07">2026</option>
+                        <option value="08">2027</option>
+                        <option value="09">2028</option>
+                        <option value="10">2029</option>
+                        <option value="11">2030</option>
+                    </select> 
+        
+                </div>
+                
+                <!-- validation -->
+                <div *ngIf="submitted && addForm.controls.month.errors">
+                    <div *ngIf="addForm.controls.month.errors.required" class="text-danger">
+                        <small>Month is required..</small>
+                    </div>
+                </div>
+
+                <!-- validation -->
+                <div *ngIf="submitted && addForm.controls.year.errors">
+                    <div *ngIf="addForm.controls.year.errors.required" class="text-danger">
+                        <small>Year is required..</small>
+                    </div>
+                </div>
+
+                <!-- cvv -->
+                <div class="form-group">
+                    <label for="cvv">CVV <sup style="color: red;">*</sup></label>
+                    <input type="number" class="form-control" formControlName="cvv" placeholder="Enter CVV">
+        
+                    <!-- validation -->
+                    <div *ngIf="submitted && addForm.controls.cvv.errors">
+                        <div *ngIf="addForm.controls.cvv.errors.required" class="text-danger">
+                            <small>CVV is required..</small>
+                        </div>
+                        <div *ngIf="addForm.controls.cvv.errors.pattern" class="text-danger">
+                            <small>CVV must be of 3 digits..</small>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-raised btn-success">Pay &#8377; {{this.foreClose}}</button> &nbsp;
+                <button type="button" class="btn btn-raised btn-danger" routerLink="/home">Cancel</button>
+            </form>
+    </div>
+</div>
+<br>
+
+<!-- alert for successfull foreclose -->
+<div class="alert alert-success text-center" *ngIf="foreClosure" role="alert">
+    {{this.message}}
+</div>
+<br>

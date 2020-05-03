@@ -1,0 +1,66 @@
+<!-- alert for Invalid Credentials -->
+<div class="alert alert-danger text-center" role="alert" *ngIf="invalidLogin">
+  {{this.error}}
+</div>
+
+<!-- login form -->
+<div class="offset-lg-4 offset-md-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 shadow-lg p-3 mb-5  rounded"
+  style="margin-top: 4%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+  <h4 class="text-center text-light bg-primary"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Customer
+    Login</h4>
+  <br>
+
+  <!-- form -->
+  <form [formGroup]="loginForm" (ngSubmit)="verifyLogin()">
+
+    <!-- username -->
+    <div class="form-group row">
+      <label for="account" class="col-sm-5 col-form-label">Account Number <sup style="color: red;">*</sup></label>
+      <div class="col-sm-7">
+        <input type="number" class="form-control" formControlName="accountNum" placeholder="Enter Account Number" />
+
+        <!-- validation -->
+        <div *ngIf="submitted && loginForm.controls.accountNum.errors">
+          <div class="text-danger" *ngIf="loginForm.controls.accountNum.errors.required">
+            <small> Account Number is required..</small>
+          </div>
+          <div *ngIf="loginForm.controls.accountNum.errors.pattern" class="text-danger">
+            <small>Must be of 11 Digits and Numeric..!!</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- password -->
+    <div class="form-group row">
+      <label for="password" class="col-sm-5 col-form-label">Password <sup style="color: red;">*</sup></label>
+      <div class="col-sm-7">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+
+        <!-- validation -->
+        <div *ngIf="submitted && loginForm.controls.password.errors">
+          <div class="text-danger" *ngIf="loginForm.controls.password.errors.required">
+            <small>Password is required..</small>
+          </div>
+          <div *ngIf="loginForm.controls.password.errors.pattern" class="text-danger">
+            <small>Must contain one capital letter, numbers and symbol with at least 6 chars..</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- info -->
+    <div class="text-center">
+      <small style="color: red;">* All fields are mandatory..</small>
+    </div>
+
+    <!-- button -->
+    <div class="form-group text-center">
+      <br>
+      <button class="btn btn-raised btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</button> &nbsp;
+      <button class="btn btn-raised btn-danger" routerLink="/index">Home</button>
+    </div>
+  </form>
+</div>
+<div class="row" style="margin-bottom: 7%;">
+</div>

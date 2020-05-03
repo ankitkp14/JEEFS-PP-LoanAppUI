@@ -1,0 +1,55 @@
+<!-- error message if loan does not exist -->
+<div class="alert alert-danger text-center" *ngIf="alertVar" role="alert">
+    No Loans Found..!!
+</div>
+
+<!-- Balance show -->
+<div class="offset-lg-2 col-lg-8 shadow-lg p-3 mb-5 rounded"
+    style="margin-top: 5%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+    <h4 class="text-center text-light bg-info"><i class="fa fa-table" aria-hidden="true"></i> Loan Balance</h4>
+    <br>
+    <!-- table to show account details and balances -->
+    <table class="table table-hover table-striped text-center">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th class="text-light">Loan Amount</th>
+                <th class="text-light">Duration</th>
+                <th class="text-light">Current Balance</th>
+                <th class="text-light">Current EMI</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&#8377; {{this.userDetails.loanAmount}}</td>
+                <td>{{this.userDetails.duration}} Months</td>
+                <td>&#8377; {{this.userDetails.loanBal}}</td>
+                <td>&#8377; {{this.userDetails.emi}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="table table-hover table-striped text-center">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th class="text-light">EMIs Left</th>
+                <th class="text-light">Foreclose Amount</th>
+                <th class="text-light">Loan Type</th>
+                <th class="text-light">ROI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.emiLeft}}</td>
+                <td>&#8377; {{this.foreClose}}</td>
+                <td>{{this.userDetails.loanType}}</td>
+                <td>{{this.userDetails.rate}} %</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" routerLink="/home" class="btn btn-raised btn-danger" style="float:right;">Back</button>
+</div>
+<div class="row" style="margin-bottom: 2%;">
+
+</div>

@@ -1,0 +1,30 @@
+<!-- alert if transaction does not exist -->
+<div class="alert alert-danger text-center" *ngIf="emptyTransaction" role="alert">
+    {{this.error}}
+</div>
+
+<div class="offset-lg-2 col-lg-8 shadow-lg p-3 mb-5 rounded" style="margin-top: 4%; background: radial-gradient(circle, rgba(212,228,244,1) 0%, rgba(212,228,244,1) 41%);">
+        <h4 id="name" class="text-center text-light bg-info"><i class="fa fa-print" aria-hidden="true"></i> Statement of Transactions</h4>
+        <br>
+        <!-- fetching from transactions -->
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr class="bg-dark">
+                    <th class="text-light">Transaction Id</th>
+                    <th class="text-light">Description <span style="float: right;">Account Num: {{this.accountNum}}</span></th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transact of transactions">
+                    <td>{{transact.transactionId}}</td>
+                    <td>{{transact.statement}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button type="button" routerLink="/home" class="btn btn-raised btn-danger" style="float:right;">Back</button>
+    </div>
+    <div class="row" style="margin-bottom: 15%;">
+
+    </div>

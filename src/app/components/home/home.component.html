@@ -1,0 +1,45 @@
+<!-- buttons and user details -->
+<div class="row" id="big"
+    style="background-image: url(assets/images/loan3.png);background-repeat: no-repeat;background-size: 100% 500px; height:500px;">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:3px;">
+        <button type="button" class="btn btn-raised btn-success btn-sm" routerLink="/apply">Apply Loan</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-info btn-sm" routerLink="/show">Show Balance</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-danger btn-sm" routerLink="/foreclose">Foreclose</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-success btn-sm" routerLink="/pay">Pay EMI</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-primary btn-sm" routerLink="/calc">Calculate EMI</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-info btn-sm" routerLink="/print">Statement</button>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right text-light">
+        <i class="fa fa-user" aria-hidden="true"></i> &nbsp; Welcome {{this.userDetails.name}} &nbsp;
+        <i class="fa fa-address-card" aria-hidden="true"></i> Account No: {{this.userDetails.accountNum}} &nbsp;
+        <button class="btn btn-raised btn-danger btn-sm" (click)="logOut()"><i class="fa fa-sign-out"
+                aria-hidden="true"></i> Logout</button>
+    </div>
+</div>
+
+<!-- code to display in small devices -->
+<div class="row" style="background-image: url(assets/images/loan5.jpg);height:500px;" id="small">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" id="details">
+        <i class="fa fa-user" aria-hidden="true"></i> &nbsp; Welcome {{this.userDetails.name}} &nbsp; <br>
+        <i class="fa fa-address-card" aria-hidden="true"></i> Account No: {{this.userDetails.accountNum}} &nbsp;
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="menu1">
+        <button type="button" class="btn btn-raised btn-success btn-sm" routerLink="/apply">Apply Loan</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-info btn-sm" routerLink="/show">Show Balance</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-danger btn-sm" routerLink="/foreclose">Foreclose</button> &nbsp;
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="menu2">
+        <button type="button" class="btn btn-raised btn-success btn-sm" routerLink="/pay">Pay EMI</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-primary btn-sm" routerLink="/calc">Calculate EMI</button> &nbsp;
+        <button type="button" class="btn btn-raised btn-info btn-sm" routerLink="/print">Statement</button>
+    </div>
+</div>
+
+<div class="row" class="text-center" id="big1">
+    <br>
+    <button class="btn btn-raised btn-danger btn-sm" (click)="logOut()"><i class="fa fa-sign-out"
+            aria-hidden="true"></i> Logout</button>
+
+</div>

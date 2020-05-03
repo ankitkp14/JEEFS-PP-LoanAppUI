@@ -1,0 +1,17 @@
+@media(max-width:767px){
+    img{
+        display: none;
+    }
+}
+
+@media(min-width:768px){
+    ul{
+        font-size: 13px;
+    }
+    h6{
+        font-size: smaller;
+    }
+    h3{
+        font-size: larger;
+    }
+}
