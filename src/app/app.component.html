@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <!-- header for application -->
+  <div class="row" id="header">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding:15px;background-color:#1565C0;">
+      <h5 class="text-light" style="font-size: large;">&nbsp;&nbsp;<i class="fa fa-address-card" aria-hidden="true"></i>&nbsp; {{title}}</h5>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="contact" style="padding:15px;background-color: #1565C0;">
+      <h6 class="text-light text-right" style="font-size:smaller;"><i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp; 24x7 Help- 1800 180
+        2265</h6>
+    </div>
+  </div>
+
+  <!-- router outlet for navigation -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <!-- container for app components -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!-- footer for application -->
+  <div class="row footer">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 18px;background-color:#1565C0;">
+      <!-- date and Copyright -->
+      <h6 class="text-right text-light" style="font-size: smaller;"><i class="fa fa-copyright" aria-hidden="true"></i> &nbsp; Copyright ABC Bank
+       2020 &nbsp; &nbsp; <i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; {{todaysDate|date:'medium'}}</h6>
+    </div>
+  </div>
+</div>

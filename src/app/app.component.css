@@ -1,0 +1,23 @@
+/* .footer
+{
+    position: fixed;
+    bottom: 0;
+    padding: 0;
+    width: 100% !important;
+} */
+
+@media(max-width:767px){
+    #header{
+        text-align: center;
+    }
+    #header.h5{
+        font-size: 12px;
+    }
+    #contact{
+        display: none;
+    }
+    h6.text-right{
+        font-size:10px;
+        text-align: center;
+    }
+}
