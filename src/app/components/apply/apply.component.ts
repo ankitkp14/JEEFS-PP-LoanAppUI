@@ -7,7 +7,7 @@ import { user } from 'src/app/models/user';
 @Component({
   selector: 'app-apply',
   templateUrl: './apply.component.html',
-  styleUrls: ['./apply.component.css']
+  styleUrls: []
 })
 export class ApplyComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-calcemi',
   templateUrl: './calcemi.component.html',
-  styleUrls: ['./calcemi.component.css']
+  styleUrls: []
 })
 export class CalcemiComponent implements OnInit {
 

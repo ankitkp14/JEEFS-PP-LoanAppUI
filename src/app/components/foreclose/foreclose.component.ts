@@ -7,7 +7,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-foreclose',
   templateUrl: './foreclose.component.html',
-  styleUrls: ['./foreclose.component.css']
+  styleUrls: []
 })
 export class ForecloseComponent implements OnInit {
 

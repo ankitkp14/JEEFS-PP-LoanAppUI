@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-showbal',
   templateUrl: './showbal.component.html',
-  styleUrls: ['./showbal.component.css']
+  styleUrls: []
 })
 export class ShowbalComponent implements OnInit {
 

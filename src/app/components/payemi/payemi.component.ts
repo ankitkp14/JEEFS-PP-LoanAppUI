@@ -7,7 +7,7 @@ import { user } from 'src/app/models/user';
 @Component({
   selector: 'app-payemi',
   templateUrl: './payemi.component.html',
-  styleUrls: ['./payemi.component.css']
+  styleUrls: []
 })
 export class PayemiComponent implements OnInit {
 
